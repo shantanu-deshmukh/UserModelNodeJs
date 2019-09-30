@@ -1,0 +1,9 @@
+{
+    "env": {
+      "PORT": "8080",
+      "MONGO_URI": "<YOUR_MONGODB_CONNECTION_URL>",
+      "EMAIL_DOMAIN":"<DOMAIN_FROM_WHICH_EMAIL_SENT>",
+      "EMAIL_API_KEY": "<MAILGUN_API_KEY>",
+      "SMTP_FROM":"<FROM_EMAIL>"
+    }
+}

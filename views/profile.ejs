@@ -1,0 +1,74 @@
+<div class="row mt-5">
+    <div class="col-md-6 m-auto">
+
+        <div class="d-flex mb-3 mt-4">
+            <h1 class="">Profile</h1>
+            <div class="ml-auto p-2"><a href="/users/logout" class="btn btn-secondary">Logout</a></div>
+        </div>
+
+        <% include ./partials/error-message %>
+        
+        <% if(user.is_verified == 'undefined' || user.is_verified != true){ %>
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            Please Verify your email address.
+        </div>
+        <% } %>
+
+        <% if(user.bio == 'undefined' || user.bio == '' ){ %>
+            <div class="alert alert-info alert-dismissible fade show" role="alert">
+                Click Edit to complete profile.
+            </div>
+            <% } %>
+
+        <div class="card mb-3">
+            <h3 class="card-header d-flex">
+                Hi <%= user.name %>
+                <a href="/profile/edit" class="btn btn-outline-secondary ml-auto p-2">Edit</a>
+            </h3>
+
+            <% if(user.bio != 'undefined' && user.bio != ''){ %>
+            <div class="card-body">
+                <h5 class="card-title"><%= user.bio %></h5>
+            </div>
+            <% } %>
+
+            <ul class="list-group list-group-flush">
+                <% if(user.city != 'undefined' && user.city !=''){ %>
+                <li class="list-group-item">
+                    <div class="text-muted">City: </div><%= user.city %>
+                </li>
+                <% } %>
+
+                <% if(user.mobile != 'undefined' && user.mobile !=''){ %>
+                <li class="list-group-item">
+                    <div class="text-muted">Mobile: </div><%= user.mobile %>
+                </li>
+                <% } %>
+
+                <% if(user.email != 'undefined' && user.email !=''){ %>
+                <li class="list-group-item">
+                    <div class="text-muted">Email: </div><%= user.email %>
+                </li>
+                <% } %>
+
+                <% if(user.website != 'undefined' && user.website !=''){ %>
+                <li class="list-group-item">
+                    <a target="__blank" href="<%= user.website %>" class="card-link">Website</a>
+                </li>
+                <% } %>
+
+                <% if(user.linkedin_url != 'undefined' && user.linkedin_url !=''){ %>
+                <li class="list-group-item">
+                    <a target="__blank" href="<%= user.linkedin_url %>" class="card-link">Linkedin Profile</a>
+                </li>
+                <% } %>
+            </ul>
+            <div class="card-footer text-muted">
+                Joined: <%= moment(user.joined_date).format( 'MMM-DD-YYYY') %>
+            </div>
+        </div>
+
+    </div>
+
+
+</div>
